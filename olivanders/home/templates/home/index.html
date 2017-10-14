@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Olivanders</title>
+        {% load staticfiles %}
+        <link rel="stylesheet" href="{% static 'home/stylesheet.css' %}">
+        <script>
+            var wand_list = [];
+            var wand_price = [];
+            var wand_img = [];
+            var wand_owner = [];
+            var wand_len = [];
+            var wand_material = [];
+            var temp;
+            {% for wand in all_wands %}
+                temp = "{{ wand.name }}";
+                wand_list.push(temp);
+                temp = "{{ wand.price }}";
+                wand_price.push(temp);
+                temp = "{{ wand.wand_image }}";
+                wand_img.push(temp);
+                temp = "{{wand.previous_owner}}";
+                wand_owner.push(temp);
+                temp = "{{wand.length}}";
+                wand_len.push(temp);
+                temp = "{{wand.made_of}}";
+                wand_material.push(temp);
+            {% endfor %}
+        </script>
+        <script type="text/javascript" src="{% static 'home/javascript.js' %}"></script>
+        <link rel="shortcut icon" href="{% static 'home/images/favicon.ico' %}" >
+    </head>
+    <body onload="indexOnload()" >
+        <div class="header">
+            <div class="logo">
+                <a href="index.html"><h1 >Olivanders</h1></a>
+            </div>
+            <div class="nav-bar">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <a  href="cart.html"><img id="cartImage" src="{% static 'home/images/cart.png' %}"  href="cart.html"></a>
+                </ul>
+            </div>
+        </div>
+        <div class="mid">
+            <p id="demo"></p>
+        </div>
+    </body>
+</html>
